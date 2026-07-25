@@ -1,15 +1,52 @@
-Welcome to your new dbt project!
+# 🚀 End-to-End Retail Data Warehouse using dbt & Snowflake
+> A production-style Retail Data Warehouse built using Snowflake, dbt, SQL, and Python that demonstrates modern Data Engineering practices including layered architecture, Star Schema design, Fact & Dimension modeling, Business Marts, Git version control, and analytics-ready data pipelines.
 
-### Using the starter project
+## 📌 Project Overview
+This project demonstrates the design and implementation of a modern Retail Data Warehouse using Snowflake and dbt.
 
-Try running the following commands:
-- dbt run
-- dbt test
+The solution follows a layered architecture that transforms raw operational data into business-ready analytical models using dbt best practices.
 
+---
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+## 🎯 Objectives
+
+- Build a production-style Data Warehouse
+- Implement Bronze, Silver and Gold layers
+- Design Star Schema
+- Create Fact and Dimension models
+- Build Business Marts
+- Demonstrate dbt best practices
+- Prepare a portfolio-ready Data Engineering project
+
+---
+
+## 🛠 Technology Stack
+
+- Snowflake
+- dbt
+- SQL
+- Git
+- GitHub
+- VS Code
+
+---
+
+## 📂 Project Structure
+
+```text
+dbt_learning
+│
+├── models
+│   ├── bronze
+│   ├── silver
+│   ├── gold
+│   │    ├── dimensions
+│   │    └── facts
+│   └── marts
+│
+├── macros
+├── seeds
+├── snapshots
+├── tests
+└── dbt_project.yml
+```
