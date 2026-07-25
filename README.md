@@ -18,6 +18,24 @@ The solution follows a layered architecture that transforms raw operational data
 - Demonstrate dbt best practices
 - Prepare a portfolio-ready Data Engineering project
 
+## 🏗️ Solution Architecture
+
+![End-to-End Architecture](diagrams/architecture.png)
+
+---
+
+## ⭐ Star Schema
+
+![Star Schema](diagrams/star_schema.png)
+
+
+---
+
+## 🔄 dbt Lineage
+
+![dbt Lineage](diagrams/dbt_lineage.png)
+
+
 ---
 
 ## 🛠 Technology Stack
@@ -31,22 +49,30 @@ The solution follows a layered architecture that transforms raw operational data
 
 ---
 
+
 ## 📂 Project Structure
 
 ```text
 dbt_learning
 │
+├── diagrams
+│   ├── architecture.png
+│   ├── star_schema.png
+│   └── dbt_lineage.png
+│
 ├── models
 │   ├── bronze
 │   ├── silver
 │   ├── gold
-│   │    ├── dimensions
-│   │    └── facts
+│   │   ├── dimensions
+│   │   └── facts
 │   └── marts
 │
 ├── macros
 ├── seeds
 ├── snapshots
 ├── tests
+├── README.md
 └── dbt_project.yml
 ```
+
