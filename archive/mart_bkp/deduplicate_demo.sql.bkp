@@ -1,5 +1,0 @@
-{{ dbt_utils.deduplicate(
-    relation=ref('stg_employees'),
-    partition_by='emp_id',
-    order_by='updated_at desc'
-) }}

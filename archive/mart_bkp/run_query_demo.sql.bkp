@@ -1,8 +1,0 @@
-{{ employee_count() }}
-
-SELECT
-
-    emp_id,
-    employee_name
-
-FROM {{ ref('stg_employees') }}

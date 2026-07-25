@@ -1,5 +1,0 @@
-SELECT
-
-    1 AS id,
-
-    '{{ env_var("COMPANY_NAME") }}' AS company_name

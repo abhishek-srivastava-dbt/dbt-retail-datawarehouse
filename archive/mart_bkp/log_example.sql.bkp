@@ -1,7 +1,0 @@
-{{log("Starting log_example model ...", info=True)}}
-
-SELECT
-    emp_id,
-    employee_name,
-    salary
-FROM {{ ref('stg_employees') }}
