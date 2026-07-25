@@ -1,0 +1,5 @@
+SELECT
+
+1 AS id,
+
+{{ greeting() }} AS message

@@ -1,0 +1,3 @@
+SELECT *
+FROM {{ ref('stg_employees') }}
+WHERE salary < 0

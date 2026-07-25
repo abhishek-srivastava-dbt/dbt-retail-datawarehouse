@@ -1,0 +1,10 @@
+SELECT
+
+    {{ dbt_utils.generate_surrogate_key(['emp_id']) }} AS employee_sk,
+
+    emp_id,
+    employee_name,
+    department,
+    salary
+
+FROM {{ ref('stg_employees') }}

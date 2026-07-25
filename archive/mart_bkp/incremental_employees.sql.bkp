@@ -1,0 +1,27 @@
+{{ config(
+    materialized='incremental',
+    unique_key='emp_id',
+    incremental_strategy='delete+insert'
+) }}
+
+SELECT
+    src.updated_at,
+    src.emp_id,
+    src.employee_name,
+    src.department,
+    src.salary,
+    src.salary_category,
+    src.city,
+    src.annual_salary
+
+FROM {{ ref('stg_employees') }} AS src
+
+{% if is_incremental() %}
+
+WHERE src.updated_at >
+(
+    SELECT COALESCE(MAX(t.updated_at), '1900-01-01'::TIMESTAMP)
+    FROM {{ this }} AS t
+)
+
+{% endif %}

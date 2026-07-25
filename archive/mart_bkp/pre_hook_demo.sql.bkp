@@ -1,0 +1,11 @@
+{{ config(
+    pre_hook="SELECT 'Model execution is starting...'"
+) }}
+
+SELECT
+
+    emp_id,
+    employee_name,
+    salary
+
+FROM {{ ref('stg_employees') }}

@@ -1,0 +1,7 @@
+SELECT
+    emp_id,
+    employee_name,
+    department,
+    salary
+FROM {{ ref('stg_employees') }}
+WHERE salary >= {{ var('salary_limit') }}

@@ -1,0 +1,11 @@
+emp_id,emp_name,department,salary,city
+101,Abhishek,QA,120000,Noida
+102,Rahul,Developer,150000,Bangalore
+103,Priya,"Data Engineer",180000,Pune
+104,Neha,HR,90000,Delhi
+105,Amit,"Business Analyst",130000,Hyderabad
+106,John,Developer,170000,Chennai
+107,Sara,QA,125000,Mumbai
+108,David,"Data Engineer",190000,Gurgaon
+109,Ravi,DevOps,175000,Noida
+110,Anita,"Project Manager",220000,Bangalore

@@ -1,0 +1,5 @@
+SELECT
+
+    {{ dbt_utils.star(from=ref('stg_employees')) }}
+
+FROM {{ ref('stg_employees') }}

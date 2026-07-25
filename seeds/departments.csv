@@ -1,0 +1,10 @@
+dept_id,department_name
+10,QA
+20,Developer
+30,HR
+40,Finance
+50,DevOps
+60,Data Engineer
+70,Business Analyst
+80,Project Manager
+90,Data Scientist

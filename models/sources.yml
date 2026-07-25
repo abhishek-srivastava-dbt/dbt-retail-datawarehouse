@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: raw
+    description: Retail raw data loaded into Snowflake
+
+    database: DBT_LEARNING
+    schema: RAW
+
+    tables:
+      - name: customers
+      - name: products
+      - name: orders
+      - name: payments
+      - name: shipments
+      - name: stores
+      - name: suppliers
+      - name: promotions

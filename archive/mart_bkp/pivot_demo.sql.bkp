@@ -1,0 +1,16 @@
+SELECT
+
+{{ dbt_utils.pivot(
+    column='department',
+    values=[
+        'QA',
+        'Developer',
+        'Data Engineer',
+        'HR',
+        'Business Analyst',
+        'DevOps',
+        'Project Manager',
+        'Data Scientist'
+    ]
+) }}
+FROM {{ ref('stg_employees') }}

@@ -1,0 +1,14 @@
+{% set columns = [
+    'emp_id',
+    'employee_name',
+    'department',
+    'salary'
+] %}
+
+SELECT
+
+{% for column in columns %}
+    {{ column }}{% if not loop.last %},{% endif %}
+{% endfor %}
+
+FROM {{ ref('stg_employees') }}

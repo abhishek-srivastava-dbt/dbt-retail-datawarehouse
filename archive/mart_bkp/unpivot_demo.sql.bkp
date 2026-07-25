@@ -1,0 +1,8 @@
+{{ dbt_utils.unpivot(
+    relation=ref('stg_employees'),
+    cast_to='varchar',
+    exclude=[
+        'emp_id',
+        'employee_name'
+    ]
+) }}

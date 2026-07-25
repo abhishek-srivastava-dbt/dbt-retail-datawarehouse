@@ -1,0 +1,10 @@
+SELECT
+
+    emp_id,
+    employee_name,
+    department,
+    salary,
+
+    {{ salary_category('salary') }} AS salary_category
+
+FROM {{ ref('stg_employees') }}
