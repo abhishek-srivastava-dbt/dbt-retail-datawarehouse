@@ -4,9 +4,23 @@
 ## 📌 Project Overview
 This project demonstrates the design and implementation of a modern Retail Data Warehouse using Snowflake and dbt.
 
-The solution follows a layered architecture that transforms raw operational data into business-ready analytical models using dbt best practices.
+The solution follows a layered architecture that transforms raw operational data into analytics-ready models that are consumed by interactive Power BI dashboards.
 
 ---
+
+## ✨ Project Features
+
+- End-to-End Retail Data Warehouse
+- Snowflake Cloud Data Platform
+- dbt Layered Architecture (Bronze → Silver → Gold)
+- Star Schema Data Modeling
+- Fact & Dimension Tables
+- Business Data Marts
+- dbt Seeds & Sources
+- dbt Snapshots
+- Data Quality Testing
+- Git Version Control
+- Power BI Dashboard
 
 ## 🎯 Objectives
 
@@ -17,6 +31,34 @@ The solution follows a layered architecture that transforms raw operational data
 - Build Business Marts
 - Demonstrate dbt best practices
 - Prepare a portfolio-ready Data Engineering project
+
+## 🔄 Data Flow
+
+CSV Files
+
+↓
+
+Snowflake RAW Layer
+
+↓
+
+Bronze Models
+
+↓
+
+Silver Models
+
+↓
+
+Gold Models
+
+↓
+
+Business Marts
+
+↓
+
+Power BI Dashboard
 
 ## 🏗️ Solution Architecture
 
@@ -40,12 +82,15 @@ The solution follows a layered architecture that transforms raw operational data
 
 ## 🛠 Technology Stack
 
-- Snowflake
-- dbt
-- SQL
-- Git
-- GitHub
-- VS Code
+| Category | Technology |
+|----------|------------|
+| Cloud Data Warehouse | Snowflake |
+| Data Transformation | dbt Core |
+|Programming & Transformation | SQL + dbt (Jinja)
+| Version Control | Git & GitHub |
+| IDE | VS Code |
+| Visualization | Power BI |
+| Documentation | dbt Docs |
 
 ---
 
@@ -65,35 +110,53 @@ This mirrors real-world ETL QA practice — validating data at each transformati
 
 ## ▶️ How to Run This Project
 
+### Prerequisites
 
-**Prerequisites:** dbt Core, a Snowflake account, and VS Code (or any IDE) with Git installed.
+Before running the project, ensure you have:
+
+- Python 3.10+
+- dbt Core with the Snowflake adapter
+- A Snowflake account
+- Git
+- VS Code (or any preferred IDE)
+
+### Setup & Execution
 
 ```bash
 # 1. Clone the repository
 git clone https://github.com/abhishek-srivastava-dbt/dbt-retail-datawarehouse.git
 cd dbt-retail-datawarehouse
 
-# 2. Install dependencies
+# 2. Install project dependencies
 dbt deps
 
 # 3. Configure your Snowflake connection
-# Add your credentials to ~/.dbt/profiles.yml
+# Update ~/.dbt/profiles.yml with your Snowflake credentials
 
-# 4. Test the connection
+# 4. Verify the connection
 dbt debug
 
-# 5. Load seed data (if applicable)
+# 5. Load seed data
 dbt seed
 
-# 6. Run all models (Bronze → Silver → Gold)
+# 6. Build the complete data warehouse
+# (Runs models, tests, snapshots, and seeds in dependency order)
+dbt build
+
+# 7. Generate documentation and lineage
+dbt docs generate
+
+# 8. Launch the documentation site
+dbt docs serve
+
+# 9. Run only models
 dbt run
 
-# 7. Run data quality tests
+# 10. Run only tests
 dbt test
 
-# 8. Generate and view documentation/lineage
-dbt docs generate
-dbt docs serve
+# 11. Refresh incremental models
+dbt build --full-refresh
 ```
 
 ---
@@ -131,3 +194,34 @@ dbt_learning
 └── dbt_project.yml
 ```
 
+## 🚀 Future Enhancements
+
+- CI/CD using GitHub Actions
+- Incremental Models
+- Snowflake Tasks
+- Streams
+- Automated Data Loading
+- dbt Cloud Deployment
+- Data Observability
+
+
+
+## 👨‍💻 Author
+
+**Abhishek Kumar Srivastava**
+
+Senior QA Automation Engineer | Aspiring Data Engineer
+
+Skills:
+- Snowflake
+- dbt
+- SQL
+- Python
+- Power BI
+- Git
+
+GitHub:
+https://github.com/abhishek-srivastava-dbt
+
+LinkedIn:
+(https://www.linkedin.com/in/sriabhisheksrivastava/)
