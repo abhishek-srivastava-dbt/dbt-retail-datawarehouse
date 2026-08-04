@@ -2,7 +2,7 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'dbt_learning'
+name: 'retail_dwh'
 version: '1.0.0'
 
 # This setting configures which "profile" dbt uses for this project.
@@ -30,32 +30,42 @@ clean-targets:         # directories to be removed by `dbt clean`
 # directory as views. These settings can be overridden in the individual model
 # files using the `{{ config(...) }}` macro.
 models:
-  dbt_learning:
+  retail_dwh:
 
+    # -------------------------
     # Bronze Layer
+    # -------------------------
     bronze:
+      +schema: bronze
       +materialized: view
 
+    # -------------------------
     # Silver Layer
+    # -------------------------
     silver:
+      +schema: silver
       +materialized: view
 
+    # -------------------------
     # Gold Layer
+    # -------------------------
     gold:
 
       dimensions:
+        +schema: gold
         +materialized: table
 
       facts:
+        +schema: gold
         +materialized: incremental
+    # -------------------------
+    # Business Marts
+    # -------------------------
+      marts:
+        +schema: gold
+        +materialized: table
 
-    # Existing training models
-    staging:
-      +materialized: table
-
-    marts:
-      +materialized: table
-
+   
 vars:
   salary_limit: 100000
 
