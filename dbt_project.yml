@@ -58,6 +58,7 @@ models:
       facts:
         +schema: gold
         +materialized: incremental
+
     # -------------------------
     # Business Marts
     # -------------------------
