@@ -86,7 +86,7 @@ Power BI Dashboard
 |----------|------------|
 | Cloud Data Warehouse | Snowflake |
 | Data Transformation | dbt Core |
-|Programming & Transformation | SQL + dbt (Jinja)
+|Programming & Transformation | SQL + dbt (Jinja) |
 | Version Control | Git & GitHub |
 | IDE | VS Code |
 | Visualization | Power BI |
@@ -171,7 +171,7 @@ dbt build --full-refresh
 ## 📂 Project Structure
 
 ```text
-dbt_learning
+dbt-retail-datawarehouse
 │
 ├── diagrams
 │   ├── architecture.png
@@ -205,12 +205,26 @@ dbt_learning
 - Data Observability
 
 
+## Business Value
+
+This project demonstrates production-style Data Engineering practices including:
+
+- Layered Medallion Architecture
+- Star Schema Data Modeling
+- Automated Data Quality Testing
+- Incremental Data Processing
+- Analytics-ready Data Pipelines
+- Version-controlled dbt Development
+- Interactive Power BI Reporting
+
+The project is designed to showcase skills commonly required for modern Data Engineer, Analytics Engineer, ETL Developer, and Snowflake Developer roles.
+
 
 ## 👨‍💻 Author
 
 **Abhishek Kumar Srivastava**
 
-Senior QA Automation Engineer | Aspiring Data Engineer
+Senior Data Engineer | ETL & Data Quality Engineer | Snowflake | dbt | SQL | Python
 
 Skills:
 - Snowflake
