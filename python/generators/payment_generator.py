@@ -8,6 +8,9 @@ from config.constants import (
 )
 
 from config.settings import DATASET_DIR
+from utils.logger import get_logger
+
+logger = get_logger("PaymentGenerator")
 
 # ==========================================
 # Retail Payment Data Generator
@@ -24,6 +27,8 @@ payments_file = os.path.join(
     DATASET_DIR,
     "payments.csv"
 )
+logger.info("Starting payment data generation")
+
 payments = []
 
 # Read Orders
@@ -57,6 +62,9 @@ with open(payments_file, "w", newline="") as file:
     ])
 
     writer.writerows(payments)
+
+logger.info(f"{len(payments)} payments generated successfully")
+logger.info(f"Payments file created: {payments_file}")
 
 print("=" * 60)
 print("SUCCESS!")

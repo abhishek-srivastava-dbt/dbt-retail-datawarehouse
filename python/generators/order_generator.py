@@ -4,6 +4,9 @@ import os
 from datetime import datetime, timedelta
 
 from config.settings import DATASET_DIR
+from utils.logger import get_logger
+
+logger = get_logger("OrderGenerator")
 # ==========================================
 # Retail Order Data Generator
 # Generates 100 realistic orders
@@ -45,6 +48,8 @@ rows = []
 # ==========================================
 # Generate 100 Orders
 # ==========================================
+logger.info("Starting order data generation")
+
 for i in range(1, 101):
 
     product = random.choice(products)
@@ -93,6 +98,9 @@ with open(output_file, "w", newline="") as file:
     ])
 
     writer.writerows(rows)
+
+logger.info(f"{len(rows)} orders generated successfully")
+logger.info(f"Orders file created: {output_file}")
 
 print("=" * 60)
 print("SUCCESS!")
