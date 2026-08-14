@@ -50,28 +50,35 @@ rows = []
 # ==========================================
 logger.info("Starting order data generation")
 
-for i in range(1, 101):
+try:
 
-    product = random.choice(products)
-    quantity = random.randint(1, 5)
+    for i in range(1, 101):
 
-    total_amount = product_price[product] * quantity
+        product = random.choice(products)
+        quantity = random.randint(1, 5)
 
-    order_date = (
-        start_date +
-        timedelta(days=random.randint(0, 90))
-    ).strftime("%Y-%m-%d")
+        total_amount = product_price[product] * quantity
 
-    rows.append([
-        f"O{i:04d}",
-        random.choice(customers),
-        product,
-        random.choice(stores),
-        order_date,
-        quantity,
-        total_amount,
-        random.choice(statuses)
-    ])
+        order_date = (
+            start_date +
+            timedelta(days=random.randint(0, 90))
+        ).strftime("%Y-%m-%d")
+
+        rows.append([
+            f"O{i:04d}",
+            random.choice(customers),
+            product,
+            random.choice(stores),
+            order_date,
+            quantity,
+            total_amount,
+            random.choice(statuses)
+        ])
+
+except Exception as e:
+
+    logger.error(f"Order generation failed: {e}")
+    raise
 
 # ==========================================
 # Save CSV inside datasets folder
@@ -82,22 +89,29 @@ output_file = os.path.join(
     "orders.csv"
 )
 
-with open(output_file, "w", newline="") as file:
+try:
 
-    writer = csv.writer(file)
+    with open(output_file, "w", newline="") as file:
 
-    writer.writerow([
-        "ORDER_ID",
-        "CUSTOMER_ID",
-        "PRODUCT_ID",
-        "STORE_ID",
-        "ORDER_DATE",
-        "QUANTITY",
-        "TOTAL_AMOUNT",
-        "ORDER_STATUS"
-    ])
+        writer = csv.writer(file)
 
-    writer.writerows(rows)
+        writer.writerow([
+            "ORDER_ID",
+            "CUSTOMER_ID",
+            "PRODUCT_ID",
+            "STORE_ID",
+            "ORDER_DATE",
+            "QUANTITY",
+            "TOTAL_AMOUNT",
+            "ORDER_STATUS"
+        ])
+
+        writer.writerows(rows)
+
+except Exception as e:
+
+    logger.error(f"Failed to write orders file: {e}")
+    raise
 
 logger.info(f"{len(rows)} orders generated successfully")
 logger.info(f"Orders file created: {output_file}")
