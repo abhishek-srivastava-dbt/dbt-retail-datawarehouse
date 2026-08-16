@@ -27,41 +27,56 @@ payments_file = os.path.join(
     DATASET_DIR,
     "payments.csv"
 )
+
 logger.info("Starting payment data generation")
 
 payments = []
 
 # Read Orders
-with open(orders_file, "r") as file:
+try:
 
-    reader = csv.DictReader(file)
+    with open(orders_file, "r") as file:
 
-    for i, row in enumerate(reader, start=1):
+        reader = csv.DictReader(file)
 
-        payments.append([
-            f"PM{i:03}",
-            row["ORDER_ID"],                  # <-- Uses Order ID from orders.csv
-            random.choice(PAYMENT_METHODS),
-            row["ORDER_DATE"],               # Payment date same as order date
-            random.choice(PAYMENT_STATUSES),
-            row["TOTAL_AMOUNT"]              # Payment amount = order amount
-        ])
+        for i, row in enumerate(reader, start=1):
+
+            payments.append([
+                f"PM{i:03}",
+                row["ORDER_ID"],
+                random.choice(PAYMENT_METHODS),
+                row["ORDER_DATE"],
+                random.choice(PAYMENT_STATUSES),
+                row["TOTAL_AMOUNT"]
+            ])
+
+except Exception as e:
+
+    logger.error(f"Failed to read orders file: {e}")
+    raise
 
 # Save payments.csv
-with open(payments_file, "w", newline="") as file:
+try:
 
-    writer = csv.writer(file)
+    with open(payments_file, "w", newline="") as file:
 
-    writer.writerow([
-        "PAYMENT_ID",
-        "ORDER_ID",
-        "PAYMENT_METHOD",
-        "PAYMENT_DATE",
-        "PAYMENT_STATUS",
-        "AMOUNT"
-    ])
+        writer = csv.writer(file)
 
-    writer.writerows(payments)
+        writer.writerow([
+            "PAYMENT_ID",
+            "ORDER_ID",
+            "PAYMENT_METHOD",
+            "PAYMENT_DATE",
+            "PAYMENT_STATUS",
+            "AMOUNT"
+        ])
+
+        writer.writerows(payments)
+
+except Exception as e:
+
+    logger.error(f"Failed to write payments file: {e}")
+    raise
 
 logger.info(f"{len(payments)} payments generated successfully")
 logger.info(f"Payments file created: {payments_file}")
