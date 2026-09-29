@@ -86,7 +86,7 @@ Power BI Dashboard
 |----------|------------|
 | Cloud Data Warehouse | Snowflake |
 | Data Transformation | dbt Core |
-|Programming & Transformation | SQL + dbt (Jinja) |
+| Programming & Transformation | SQL + dbt (Jinja) |
 | Version Control | Git & GitHub |
 | IDE | VS Code |
 | Visualization | Power BI |
@@ -108,58 +108,6 @@ This mirrors real-world ETL QA practice — validating data at each transformati
 
 ---
 
-## ▶️ How to Run This Project
-
-### Prerequisites
-
-Before running the project, ensure you have:
-
-- Python 3.10+
-- dbt Core with the Snowflake adapter
-- A Snowflake account
-- Git
-- VS Code (or any preferred IDE)
-
-### Setup & Execution
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/abhishek-srivastava-dbt/dbt-retail-datawarehouse.git
-cd dbt-retail-datawarehouse
-
-# 2. Install project dependencies
-dbt deps
-
-# 3. Configure your Snowflake connection
-# Update ~/.dbt/profiles.yml with your Snowflake credentials
-
-# 4. Verify the connection
-dbt debug
-
-# 5. Load seed data
-dbt seed
-
-# 6. Build the complete data warehouse
-# (Runs models, tests, snapshots, and seeds in dependency order)
-dbt build
-
-# 7. Generate documentation and lineage
-dbt docs generate
-
-# 8. Launch the documentation site
-dbt docs serve
-
-# 9. Run only models
-dbt run
-
-# 10. Run only tests
-dbt test
-
-# 11. Refresh incremental models
-dbt build --full-refresh
-```
-
----
 
 ## 💡 Key Learnings & Challenges
 
