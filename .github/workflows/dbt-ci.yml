@@ -1,0 +1,71 @@
+name: dbt CI
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  dbt-ci:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dbt
+        run: |
+          python -m pip install --upgrade pip
+          pip install dbt==2.0.6
+
+      - name: Verify dbt installation
+        run: |
+          dbt --version
+
+
+
+      - name: Create dbt profile
+        run: |
+          mkdir -p ~/.dbt
+
+          cat > ~/.dbt/profiles.yml <<'EOF'
+          dbt_learning:
+            target: dev
+            outputs:
+              dev:
+                type: snowflake
+                account: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+                user: ${{ secrets.SNOWFLAKE_USER }}
+                password: ${{ secrets.SNOWFLAKE_PASSWORD }}
+                role: ${{ secrets.SNOWFLAKE_ROLE }}
+                warehouse: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
+                database: ${{ secrets.SNOWFLAKE_DATABASE }}
+                schema: CI
+                threads: 4
+                client_session_keep_alive: false
+          EOF
+
+
+      - name: Test Snowflake connection
+        run: |
+          dbt debug
+
+      - name: Install dbt packages
+        run: |
+          dbt deps
+
+      - name: Validate dbt project
+        run: |
+          dbt parse
+
+      - name: Build dbt project
+        run: |
+          dbt build
